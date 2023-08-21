@@ -1,0 +1,79 @@
+﻿<html lang="en" xmlns:th="hhtp://www.w3.org/1999/xhtml">
+<head>
+<title>Admin System</title>
+<link rel = "stylesheet" href = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"/>
+</head>
+	<header class="site-header sticky-top py-1" style="background-color:black">
+  <nav class="container d-flex flex-column flex-md-row justify-content-between">
+    <a class="py-2" href="#" aria-label="Product">
+    </a>
+    <a class="py-2 d-none d-md-inline-block col-12 text-center" href="#"><h1>AIRPLANE Admin System</h1></a>
+
+
+<nav class="navbar navbar-dark navbar-expand-lg navbar-togglable fixed-top">
+      <div class="container">
+    
+        <!-- Navbar brand (mobile) -->
+        <h1 class="navbar-brand d-lg-none"></h1>
+    
+        <!-- Navbar toggler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <!-- Navbar collapse -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+    
+          <!-- Navbar nav -->
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " href="admin/newticket">New</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="admin/removeticket">Remove</a>
+            </li>
+          </ul>
+    
+          <!-- Navbar brand -->
+     
+    
+          <!-- Navbar nav -->
+          <ul class="navbar-nav">
+          <li>
+              <a class="nav-link " href="admin/updateticket">Update</a>
+              </li>
+          </ul>
+    
+        </div>
+      </div>
+    </nav>
+
+
+  </nav>
+</header>
+<body>
+<div class = "container">
+<div th:each="ticket : ${tickets}" class="alert alert-info mt-1">
+
+<div class="row">
+<h1 th:text = ${ticket.getId()} class = "col"></h1>
+<h4 th:text = ${ticket.getTitle()} class = "col"></h4>
+<p th:text = ${ticket.getDate()} class = "col"></p>
+<p th:text = ${ticket.getTime()} class = "col"></p>
+<div class = "row mt-5" style = "color:black;">
+<p class = "col text-center">From</p>
+<p class = "col">To</p>
+<p class = "col">Price</p>
+<p class = "col">Passangers</p>
+</div>
+<div class="row">
+<p th:text = ${ticket.getSendAirport()} class = "col text-center">user</p><br>
+<p th:text = ${ticket.getReceiveAirport()} class = "col">user</p><br>
+<p th:text = ${ticket.getPrice()} class = "col">user</p><br>
+<p th:text = ${ticket.getPassangers()} class = "col" >user</p></div>
+</div>
+</div>
+</div>
+<script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
