@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tickets.model.Ticket;
 import com.tickets.service.TicketService;
@@ -23,7 +24,6 @@ public class AdminCommandController {
 	}
 
 	
-	
 	@GetMapping()
 	public String adminPanel(Model model) {
 		model.addAttribute("tickets", ticketService.getAll());
@@ -36,14 +36,14 @@ public class AdminCommandController {
 			return "redirect:/admin";
 	}
 	
-	@DeleteMapping("/delete")
-	public String deleteTicket(@ModelAttribute Ticket ticket) {
-		ticketService.delete(ticket.getId());
+	@PostMapping("/delete")
+	public String deleteTicket(@RequestParam long id) {
+		ticketService.delete(id);
 		return "redirect:/admin";
 		
 	}
 	
-	@PutMapping("update")
+	@PostMapping("update")
 	public String update(@ModelAttribute Ticket ticket) {
 		ticketService.update(ticket);
 		return "redirect:/admin";

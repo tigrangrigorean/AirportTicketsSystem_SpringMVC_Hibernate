@@ -18,6 +18,16 @@ public class TicketRepositoryImpl implements TicketRepository {
 	private Configuration config = HibernateConfig.getConfiguration();
 	private SessionFactory sessionFactory = config.buildSessionFactory();
 	
+	
+	@Override
+	public Ticket getById(long id) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		Ticket ticket = session.get(Ticket.class, id);
+		session.getTransaction().commit();
+		session.close();
+		return ticket;
+	}
 
 	@Override
 	public List<Ticket> getAll() {
@@ -58,5 +68,7 @@ public class TicketRepositoryImpl implements TicketRepository {
 		session.getTransaction().commit();
 		session.close();
 	}
+
+	
 
 }
