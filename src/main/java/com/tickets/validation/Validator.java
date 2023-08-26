@@ -43,7 +43,7 @@ public class Validator {
 
 	    public boolean checkEntity(Ticket ticket) {
 	        if (ticket == null) {
-	            throw new EntityNotFoundException("Address not found");
+	            throw new EntityNotFoundException("Entity not found");
 	        }
 	        
 	        checkName(ticket.getTitle());
@@ -52,7 +52,7 @@ public class Validator {
 	        checkTime(ticket.getTime());
 	        checkName(ticket.getSendAirport());
 	        checkName(ticket.getReceiveAirport());
-	        checkPrice(Double.parseDouble(ticket.getPrice()));
+	        checkPrice(Double.parseDouble(ticket.getPrice().substring(0, ticket.getPrice().length()-1)));
 	        return true;
 	    }
 	    
